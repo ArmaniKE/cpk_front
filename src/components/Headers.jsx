@@ -37,7 +37,7 @@ const Header2 = () => {
     <header className="relative py-3 px-20 bg-white border-b border-gray-300 flex items-center justify-between">
       <div className="flex items-center space-x-20">
         <Link to="/"><img src="/logo2.svg" alt="CapitalPlastKZ" className="h-[80px] w-[120px]" /></Link>
-        <Link to="/catalog">
+        <Link to="/categories">
           <button className="flex items-center bg-sky-500 hover:bg-sky-300 text-white font-medium py-2 px-6 rounded-lg">
             <img src="/header/catalog_icon.svg" alt="Catalog" className="mr-2 h-5 w-5" />
             Каталог товаров
@@ -52,7 +52,7 @@ const Header2 = () => {
         </div>
       </div>
       <div className="flex items-center space-x-10">
-        <Link to="/login"><img src="/header/user_icon.svg" alt="User" className="h-8 w-8" /></Link>
+        <Link to="/auth"><img src="/header/user_icon.svg" alt="User" className="h-8 w-8" /></Link>
         <Link to="/wishlist"><img src="/header/heart_icon.svg" alt="Wishlist" className="h-8 w-8" /></Link>
         <Link to="/cart"><img src="/header/cart_icon.svg" alt="Cart" className="h-8 w-8" /></Link>
       </div>

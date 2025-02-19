@@ -23,7 +23,7 @@ const Wishlist = () => {
       </div>
       <div className="mt-5 mb-10">
         {wishlist.length === 0 ? (
-          <p className='text-center p-10 text-[28px]'>Ваш список желаний пуст</p>
+          <p className='text-center p-20 text-[28px]'>Ваш список желаний пуст</p>
         ) : (
           <div className="grid grid-cols-3 gap-4">
             {wishlist.map(item => (
