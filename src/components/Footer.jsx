@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="w-full bg-[#00A3FF] border-t text-white py-3">
-      <div className="container px-10 flex justify-between">
+      <div className="px-10 flex justify-between">
         <div className="text-left text-[28px] font-semibold mt-3">
           CapitalPlastKZ
         </div>

@@ -36,9 +36,9 @@ const Cart = () => {
         <span className="">{">"}</span>
         <span className="">Корзина</span>
       </div>
-      <div className="mt-5">
+      <div className="mt-5 mb-10">
         {cart.length === 0 ? (
-          <p className='text-center p-10 text-[28px]'>Ваша корзина пуста</p>
+          <p className='text-center p-20 text-[28px]'>Ваша корзина пуста</p>
         ) : (
           <div className="grid grid-cols-3 gap-4">
             {cart.map(item => {
