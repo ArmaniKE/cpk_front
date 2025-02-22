@@ -19,7 +19,7 @@ const Header1 = () => {
             </div>
           </div>
           <div className="flex items-center text-base font-medium text-black whitespace-nowrap"> 
-            <div className="mr-2"><a href="tel:87710510033">8 (771) 051-00-33</a>, <a href="tel:87029453477">8 (702) 945-34-77</a></div>
+            <div className="mr-2">8 (771) 051-00-33, 8 (702) 945-34-77</div>
             <img src="/header/dropdown_icon.svg" alt="Dropdown" className="h-3 w-3"/>
           </div>
         </div>
