@@ -1,19 +1,19 @@
 import React from "react";
 import {Route,createBrowserRouter,createRoutesFromElements,RouterProvider,Outlet,} from "react-router-dom";
-import { Header1, Header2 } from "./components/Headers";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Cart from "./pages/Cart";
-import Delivery from "./pages/Delivery";
-import Pricelist from "./pages/Pricelist";
-import Wishlist from "./pages/Wishlist";
-import Footer from "./components/Footer";
-import Login from "./pages/Login";
-import Registration from "./pages/Registration";
-import AdminPanel from "./pages/AdminPanel";
-import Auth from "./pages/Auth";
-import Categories from "./pages/Categories";
-import Subcategory from "./pages/Subcategory";
+import { Header1, Header2 } from "./ui/components/Headers";
+import Home from "./ui/pages/Home";
+import About from "./ui/pages/About";
+import Cart from "./ui/pages/Cart";
+import Delivery from "./ui/pages/Delivery";
+import Pricelist from "./ui/pages/Pricelist";
+import Wishlist from "./ui/pages/Wishlist";
+import Footer from "./ui/components/Footer";
+import Login from "./ui/pages/Login";
+import Registration from "./ui/pages/Registration";
+import AdminPanel from "./ui/pages/AdminPanel";
+import Auth from "./ui/pages/Auth";
+import Categories from "./ui/pages/Categories";
+import Subcategory from "./ui/pages/Subcategory";
 
 function Layout() {
   return (
