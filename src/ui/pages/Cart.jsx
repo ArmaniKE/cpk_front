@@ -55,7 +55,7 @@ const Cart = () => {
                 >
                   <div className="flex justify-center">
                     <img
-                      src={item.image}
+                      src={item.image_url}
                       alt={item.name}
                       className="h-48 object-cover rounded-t-lg"
                     />

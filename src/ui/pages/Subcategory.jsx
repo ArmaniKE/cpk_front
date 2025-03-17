@@ -12,6 +12,7 @@ const Subcategory = () => {
     return JSON.parse(localStorage.getItem("cart")) || [];
   });
   const [pressed, setPressed] = useState({});
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const initialPressed = {};
@@ -20,6 +21,26 @@ const Subcategory = () => {
     });
     setPressed(initialPressed);
   }, [cart]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      if (subcategory && subcategory.id) {
+        try {
+          const response = await fetch(
+            `http://127.0.0.1:8000/api/items?category-id=${subcategory.id}`
+          );
+          if (!response.ok) {
+            throw new Error("Ошибка при получении товаров");
+          }
+          const data = await response.json();
+          setItems(data);
+        } catch (error) {
+          console.error("Ошибка:", error);
+        }
+      }
+    };
+    fetchItems();
+  }, [subcategory]);
 
   const handleWishToggle = (item) => {
     let updatedWishlist = [...wishlist];
@@ -47,7 +68,7 @@ const Subcategory = () => {
     }));
   };
 
-  if (!subcategory || !subcategory.items) {
+  if (!subcategory || !items.length) {
     return <p className="text-center text-red-500">Товары не найдены</p>;
   }
 
@@ -55,10 +76,13 @@ const Subcategory = () => {
     <div className="max-w-5xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-4">{subcategory.name}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {subcategory.items.map((item, index) => {
+        {items.map((item, index) => {
           const isInWishlist = wishlist.some((w) => w.name === item.name);
           return (
-            <div key={index} className="bg-white p-4 rounded-xl shadow-lg relative flex flex-col">
+            <div
+              key={index}
+              className="bg-white p-4 rounded-xl shadow-lg relative flex flex-col"
+            >
               <div className="absolute top-2 right-2">
                 <button
                   onClick={() => handleWishToggle(item)}
@@ -77,7 +101,7 @@ const Subcategory = () => {
               </div>
               <div className="flex justify-center">
                 <img
-                  src={item.image}
+                  src={item.image_url}
                   alt={item.name}
                   className="h-40 object-cover rounded-lg"
                 />
@@ -91,7 +115,9 @@ const Subcategory = () => {
                   pressed[item.name] ? "bg-sky-300" : "bg-sky-500"
                 }`}
               >
-                <span>{pressed[item.name] ? "Добавлено в корзину" : "Купить"}</span>
+                <span>
+                  {pressed[item.name] ? "Добавлено в корзину" : "Купить"}
+                </span>
               </button>
             </div>
           );

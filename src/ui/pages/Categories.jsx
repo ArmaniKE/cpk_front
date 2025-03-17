@@ -1,34 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import categories from "../../data/categories";
 
 const Categories = () => {
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
   const handleSubClick = (subcategory) => {
     navigate("/subcategory", { state: subcategory });
   };
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/categories");
+        if (!response.ok) {
+          throw new Error("Ошибка при получении данных");
+        }
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Ошибка:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-      {Object.entries(categories).map(([category, subcategories]) => (
-        <div key={category} className="bg-white p-4 rounded-2xl shadow-lg">
-          <h2 className="text-2xl font-bold mb-2">{category}</h2>
+      {categories.map(({ id, name, subcategories }) => (
+        <div key={id} className="bg-white p-4 rounded-2xl shadow-lg">
+          <h2 className="text-2xl font-bold mb-2">{name}</h2>
           <ul className="text-gray-600 text-lg">
-            {subcategories.map((sub) => (
-              <li key={sub.id} className="mb-1">
-                {sub.type === "complex" ? (
+            {Array.isArray(subcategories) ? (
+              subcategories.map((sub) => (
+                <li key={sub.id} className="mb-1">
                   <span
-                    className="text-sky-500 cursor-pointer hover:underline"
+                    className="cursor-pointer hover:underline"
                     onClick={() => handleSubClick(sub)}
                   >
                     {sub.name}
                   </span>
-                ) : (
-                  sub.name
-                )}
-              </li>
-            ))}
+                </li>
+              ))
+            ) : (
+              <li>Нет подкатегорий</li>
+            )}
           </ul>
         </div>
       ))}
