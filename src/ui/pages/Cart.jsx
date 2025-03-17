@@ -45,10 +45,9 @@ const Cart = () => {
         ) : (
           <div className="grid grid-cols-3 gap-4">
             {cart.map((item, index) => {
-              const price = parseFloat(item.price);
-              const quantity = parseInt(item.quantity, 10);
-              const totalPrice =
-                isNaN(price) || isNaN(quantity) ? 0 : price * quantity;
+              const price = parseInt(item.price);
+              const quantity = parseInt(item.quantity);
+              const totalPrice = price * quantity;
               return (
                 <div
                   key={item.id || index}
