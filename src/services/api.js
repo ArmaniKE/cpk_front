@@ -17,25 +17,40 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export const register = (userData) => {
-  console.log("Registering user:", userData);
-  return api.post("register", userData);
+export const register = async (userData) => {
+  try {
+    // console.log("Регистрация:", userData);
+    if (!userData.username || !userData.password) {
+      throw new Error("Отсутствуют обязательные поля");
+    }
+    const response = await api.post("register", userData);
+    console.log("Регистрация успешна:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Ошибка:", error.message);
+    throw error;
+  }
 };
 
 export const login = async (userData) => {
   try {
-    console.log("Logging in user:", userData);
+    if (!userData.username || !userData.password) {
+      throw new Error("Отсутствуют обязательные поля");
+    }
+    // console.log("Попытка входа в систему...");
     const response = await api.post("login", userData);
     if (response.data.token) {
-      localStorage.setItem("token", response.data.token); // Store token
-      console.log("Login successful, token stored!");
-      // console.log(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      // if (response.data.user) {
+      //   localStorage.setItem("user", JSON.stringify(response.data.user));
+      // }
+      console.log("Вход выполнен успешно!");
+      return response.data;
     } else {
-      console.error("Login failed: No token received");
+      throw new Error("Токен не получен");
     }
-    return response.data;
   } catch (error) {
-    console.error("Login error:", error.response?.data || error.message);
+    console.error("Ошибка:", error.message);
     throw error;
   }
 };
@@ -45,5 +60,6 @@ export const login = async (userData) => {
 //   return api.post("logout");
 // };
 
-export const getUser = () => api.get("user");
+// export const getUser = () => api.get("user");
+
 export default api;

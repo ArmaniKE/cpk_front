@@ -4,9 +4,9 @@ const Delivery = () => {
   return (
     <div className="px-10 py-5 bg-[#E8E8E8]">
       <div className="text-[#6F6D6D] space-x-2 font-semibold">
-        <span className="">Главная</span>
-        <span className="">{">"}</span>
-        <span className="">Доставка и оплата</span>
+        <span>Главная</span>
+        <span>{">"}</span>
+        <span>Доставка и оплата</span>
       </div>
       <div className="py-10">
         <h1 className="text-center text-[64px] font-semibold">

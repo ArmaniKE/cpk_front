@@ -9,7 +9,6 @@ const Wishlist = () => {
   }, []);
 
   const removeFromWishlist = (itemIndex) => {
-    // console.log("Removing item at index:", itemIndex);
     const updatedWishlist = wishlist.filter((_, index) => index !== itemIndex);
     setWishlist(updatedWishlist);
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
@@ -18,9 +17,9 @@ const Wishlist = () => {
   return (
     <div className="px-10 py-5 bg-[#E8E8E8]">
       <div className="text-[#6F6D6D] space-x-2 font-semibold">
-        <span className="">Главная</span>
-        <span className="">{">"}</span>
-        <span className="">Избранное</span>
+        <span>Главная</span>
+        <span>{">"}</span>
+        <span>Избранное</span>
       </div>
       <div className="mt-5 mb-10">
         {wishlist.length === 0 ? (
@@ -37,11 +36,11 @@ const Wishlist = () => {
                 <div className="flex justify-center">
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={item.name}
                     className="h-48 object-cover rounded-t-lg"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mt-2">{item.title}</h3>
+                <h3 className="text-lg font-semibold mt-2">{item.name}</h3>
                 <p className="text-gray-600 mt-1">{item.description}</p>
                 <p className="text-green-500 font-bold mt-2">{item.price}</p>
                 <button

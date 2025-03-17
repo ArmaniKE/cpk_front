@@ -4,9 +4,9 @@ const Pricelist = () => {
   return (
     <div className="px-10 py-5 bg-[#E8E8E8]">
       <div className="text-[#6F6D6D] space-x-2 font-semibold">
-        <span className="">Главная</span>
-        <span className="">{">"}</span>
-        <span className="">Прайс-лист</span>
+        <span>Главная</span>
+        <span>{">"}</span>
+        <span>Прайс-лист</span>
       </div>
       <div className="flex flex-col items-center py-20">
         <img className="py-2" src="/pricelist/pdf.svg"></img>

@@ -5,7 +5,7 @@ import categories from "../../data/categories";
 const Categories = () => {
   const navigate = useNavigate();
 
-  const handleSubcategoryClick = (subcategory) => {
+  const handleSubClick = (subcategory) => {
     navigate("/subcategory", { state: subcategory });
   };
 
@@ -15,17 +15,17 @@ const Categories = () => {
         <div key={category} className="bg-white p-4 rounded-2xl shadow-lg">
           <h2 className="text-2xl font-bold mb-2">{category}</h2>
           <ul className="text-gray-600 text-lg">
-            {subcategories.map((sub, index) => (
-              <li key={index} className="mb-1">
-                {typeof sub === "object" ? (
+            {subcategories.map((sub) => (
+              <li key={sub.id} className="mb-1">
+                {sub.type === "complex" ? (
                   <span
                     className="text-sky-500 cursor-pointer hover:underline"
-                    onClick={() => handleSubcategoryClick(sub)}
+                    onClick={() => handleSubClick(sub)}
                   >
                     {sub.name}
                   </span>
                 ) : (
-                  sub
+                  sub.name
                 )}
               </li>
             ))}

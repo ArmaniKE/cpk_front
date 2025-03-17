@@ -17,88 +17,87 @@ export default function Registration({ toggleForm }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      console.log("Регистрация...");
+      // console.log("Регистрация...");
       await register(formData);
-      console.log("Регистрация успешна!");
-      alert("Регистрация успешна! Теперь войдите.");
-      toggleForm(); // Switch to login after successful registration
+      // console.log("Регистрация успешна!");
+      // alert("Регистрация успешна! Теперь войдите.");
+      toggleForm(); // switch to login after successful registration
     } catch (error) {
-      console.error("Ошибка:", error.response?.data || error.message);
-      alert("Ошибка: " + (error.response?.data?.message || "Попробуйте снова"));
+      console.error("Ошибка:", error.message);
+      alert("Ошибка: " + (error.message || "Попробуйте снова"));
     }
   };
 
   return (
     <div className="flex items-center justify-center py-10 bg-gray-100">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+      <div className="w-md p-6 bg-white rounded-2xl shadow-2xl">
         <h2 className="text-xl font-semibold text-center mb-4">Регистрация</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Имя</label>
+            <label className="text-sm font-medium text-gray-700">Имя</label>
             <input
               type="text"
               name="first_name"
               value={formData.first_name}
               onChange={handleChange}
               required
-              className="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="mt-1 w-full p-2 border rounded-lg"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Фамилия</label>
+            <label className="text-sm font-medium text-gray-700">Фамилия</label>
             <input
               type="text"
               name="last_name"
               value={formData.last_name}
               onChange={handleChange}
               required
-              className="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="mt-1 w-full p-2 border rounded-lg"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Электронная почта</label>
+            <label className="text-sm font-medium text-gray-700">Электронная почта</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
-              className="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="mt-1 w-full p-2 border rounded-lg"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Имя пользователя</label>
+            <label className="text-sm font-medium text-gray-700">Имя пользователя</label>
             <input
               type="text"
               name="username"
               value={formData.username}
               onChange={handleChange}
               required
-              className="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="mt-1 w-full p-2 border rounded-lg"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Пароль</label>
+            <label className="text-sm font-medium text-gray-700">Пароль</label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
-              className="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="mt-1 w-full p-2 border rounded-lg"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Повторите пароль</label>
+            <label className="text-sm font-medium text-gray-700">Повторите пароль</label>
             <input
               type="password"
               name="re_password"
               value={formData.re_password}
               onChange={handleChange}
               required
-              className="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="mt-1 w-full p-2 border rounded-lg"
             />
           </div>
           <button

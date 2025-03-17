@@ -2,19 +2,19 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#00A3FF] border-t text-white py-3">
+    <footer className="bg-[#00A3FF] border-t text-white py-3">
       <div className="px-10 flex justify-between">
         <div className="text-left text-[28px] font-semibold mt-3">
           CapitalPlastKZ
         </div>
-        <div className="flex px-30 space-x-30 mt-10">
+        <div className="flex space-x-30 ml-40 mt-10">
           <div className="space-y-4">
             <div className="font-bold text-black">О компании</div>
             <div>Политика конфиденциальности</div>
             <div>Сертификаты</div>
             <div>Реквизиты</div>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-4">
             <div className="font-bold text-black">Контакты</div>
             <div>Астана</div>
             <div>Алматы</div>
@@ -27,7 +27,7 @@ const Footer = () => {
             <div>Усть-Каменогорск</div>
             <div>Петропавловск</div>
           </div>
-          <div className="space-y-4 w-40">
+          <div className="space-y-4">
             <div className="font-bold text-black">Полезно</div>
             <div>Условия возврата и гарантии</div>
             <div>Доставка</div>

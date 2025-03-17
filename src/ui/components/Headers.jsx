@@ -4,27 +4,25 @@ import { Link } from 'react-router-dom';
 
 const Header1 = () => {
   return (
-    <header className="relative py-6 px-20 bg-white border-b border-gray-300 flex items-center justify-between"> 
-      <div className="flex items-center space-x-10">
-        <Link to="/about" className="text-base font-medium text-black">О компании</Link>
-        <Link to="/delivery" className="text-base font-medium text-black">Доставка и оплата</Link>
-        <Link to="/pricelist" className="text-base font-medium text-black">Прайс-лист</Link>
+    <header className="py-6 px-20 bg-white border-b border-gray-300 flex justify-between"> 
+      <div className="space-x-10">
+        <Link to="/about" className="font-medium text-black">О компании</Link>
+        <Link to="/delivery" className="font-medium text-black">Доставка и оплата</Link>
+        <Link to="/pricelist" className="font-medium text-black">Прайс-лист</Link>
       </div>
       <div className="flex items-center"> 
         <div className="flex items-center px-10">
-          <div className="flex items-center"> 
-            <div className="flex items-center px-10">
-              <span className="text-base font-medium text-black mr-2">Астана</span>
-              <img src="/header/dropdown_icon.svg" alt="Dropdown" className="h-3 w-3"/>
-            </div>
+          <div className="flex items-center px-10">
+            <span className="font-medium text-black mr-2">Астана</span>
+            <img src="/header/dropdown_icon.svg" alt="Dropdown" className="h-3 w-3"/>
           </div>
-          <div className="flex items-center text-base font-medium text-black whitespace-nowrap"> 
+          <div className="flex items-center font-medium text-black"> 
             <div className="mr-2">8 (771) 051-00-33, 8 (702) 945-34-77</div>
             <img src="/header/dropdown_icon.svg" alt="Dropdown" className="h-3 w-3"/>
           </div>
         </div>
         <img src="/header/phone_icon.svg" alt="Phone" className="h-5 w-5" />
-        <a href="#" className="text-base font-medium text-sky-500 underline ml-2"> 
+        <a href="#" className="font-medium text-sky-500 underline ml-2"> 
           Заказать звонок
         </a>
       </div>
