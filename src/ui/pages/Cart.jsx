@@ -1,36 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart, updateQuantity} from "../../state/slices/cartSlice";
 
 const Cart = () => {
-  const [cart, setCart] = useState([]);
+  const cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(savedCart);
-  }, []);
-
-  const removeFromCart = (itemIndex) => {
-    const updatedCart = cart.filter((_, index) => index !== itemIndex);
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  };
-
-  const updateQuantity = (itemIndex, action) => {
-    const updatedCart = cart.map((item, index) => {
-      if (index === itemIndex) {
-        return {
-          ...item,
-          quantity:
-            action === "increase"
-              ? item.quantity + 1
-              : Math.max(1, item.quantity - 1),
-        };
-      }
-      return item;
-    });
-
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  };
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className="px-10 py-5 bg-[#E8E8E8]">
@@ -66,21 +44,21 @@ const Cart = () => {
                   <p className="text-green-500 font-bold mt-2">{`Итоговая цена: ${totalPrice}₸`}</p>
                   <div className="flex items-center space-x-2 mt-4 justify-center">
                     <button
-                      onClick={() => updateQuantity(index, "decrease")}
+                      onClick={() => dispatch(updateQuantity({ index, type: "decrease" }))}
                       className="p-2 bg-gray-200 rounded-full hover:bg-gray-300"
                     >
                       -
                     </button>
                     <span>{item.quantity}</span>
                     <button
-                      onClick={() => updateQuantity(index, "increase")}
+                      onClick={() => dispatch(updateQuantity({ index, type: "increase" }))}
                       className="p-2 bg-gray-200 rounded-full hover:bg-gray-300"
                     >
                       +
                     </button>
                   </div>
                   <button
-                    onClick={() => removeFromCart(index)}
+                    onClick={() => dispatch(removeFromCart(index))}
                     className="absolute top-2 right-2 p-2 bg-red-200 rounded-full hover:bg-red-300"
                   >
                     <img

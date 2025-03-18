@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../state/slices/cartSlice";
 
 const Subcategory = () => {
   const location = useLocation();
   const subcategory = location.state;
+  const dispatch = useDispatch();
 
   const [wishlist, setWishlist] = useState(() => {
     return JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -55,13 +58,7 @@ const Subcategory = () => {
   };
 
   const handleBuyClick = (item) => {
-    const updatedCart = [...cart];
-    const itemIndex = updatedCart.findIndex((c) => c.name === item.name);
-    if (itemIndex === -1) {
-      updatedCart.push({ ...item, quantity: 1 });
-    }
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    dispatch(addToCart({ ...item, quantity: 1 }));
     setPressed((prevState) => ({
       ...prevState,
       [item.name]: true,
