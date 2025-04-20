@@ -1,5 +1,10 @@
-import React from "react";
-import {Route,createBrowserRouter,createRoutesFromElements,RouterProvider,Outlet,} from "react-router-dom";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
 import { Header1, Header2 } from "./ui/components/Headers";
 import Home from "./ui/pages/Home";
 import About from "./ui/pages/About";
@@ -9,7 +14,7 @@ import Pricelist from "./ui/pages/Pricelist";
 import Wishlist from "./ui/pages/Wishlist";
 import Footer from "./ui/components/Footer";
 import AdminPanel from "./ui/pages/AdminPanel";
-import Auth from "./ui/pages/Auth";
+import Auth from "./ui/auth/Auth";
 import Categories from "./ui/pages/Categories";
 import Subcategory from "./ui/pages/Subcategory";
 

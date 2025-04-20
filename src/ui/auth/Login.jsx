@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { login } from "../../services/api";
 
@@ -79,3 +80,7 @@ export default function Login({ toggleForm }) {
     </div>
   );
 }
+
+Login.propTypes = {
+  toggleForm: PropTypes.func.isRequired,
+};

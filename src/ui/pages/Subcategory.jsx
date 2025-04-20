@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../state/slices/cartSlice";
@@ -11,7 +11,7 @@ const Subcategory = () => {
   const [wishlist, setWishlist] = useState(() => {
     return JSON.parse(localStorage.getItem("wishlist")) || [];
   });
-  const [cart, setCart] = useState(() => {
+  const [cart] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
   });
   const [pressed, setPressed] = useState({});
@@ -66,7 +66,11 @@ const Subcategory = () => {
   };
 
   if (!subcategory || !items.length) {
-    return <p className="text-center text-red-500">Товары не найдены</p>;
+    return (
+      <p className="text-center text-red-500 text-2xl font-semibold p-30">
+        Товары не найдены
+      </p>
+    );
   }
 
   return (

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { register } from "../../services/api";
 
@@ -22,7 +23,7 @@ export default function Registration({ toggleForm }) {
       await register(formData);
       // console.log("Регистрация успешна!");
       // alert("Регистрация успешна! Теперь войдите.");
-      toggleForm(); // switch to login after successful registration
+      toggleForm();
     } catch (error) {
       console.error("Ошибка:", error.message);
       alert("Ошибка: " + (error.message || "Попробуйте снова"));
@@ -57,7 +58,9 @@ export default function Registration({ toggleForm }) {
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-gray-700">Электронная почта</label>
+            <label className="text-sm font-medium text-gray-700">
+              Электронная почта
+            </label>
             <input
               type="email"
               name="email"
@@ -68,7 +71,9 @@ export default function Registration({ toggleForm }) {
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-gray-700">Имя пользователя</label>
+            <label className="text-sm font-medium text-gray-700">
+              Имя пользователя
+            </label>
             <input
               type="text"
               name="username"
@@ -90,7 +95,9 @@ export default function Registration({ toggleForm }) {
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-gray-700">Повторите пароль</label>
+            <label className="text-sm font-medium text-gray-700">
+              Повторите пароль
+            </label>
             <input
               type="password"
               name="re_password"
@@ -109,7 +116,11 @@ export default function Registration({ toggleForm }) {
         </form>
         <p className="text-sm text-center mt-4">
           Уже есть аккаунт?{" "}
-          <button type="button" className="text-sky-500 hover:underline" onClick={toggleForm}>
+          <button
+            type="button"
+            className="text-sky-500 hover:underline"
+            onClick={toggleForm}
+          >
             Войти
           </button>
         </p>
@@ -117,3 +128,7 @@ export default function Registration({ toggleForm }) {
     </div>
   );
 }
+
+Registration.propTypes = {
+  toggleForm: PropTypes.func.isRequired,
+};

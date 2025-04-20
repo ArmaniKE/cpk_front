@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, updateQuantity} from "../../state/slices/cartSlice";
+import { removeFromCart, updateQuantity } from "../../state/slices/cartSlice";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -44,14 +44,18 @@ const Cart = () => {
                   <p className="text-green-500 font-bold mt-2">{`Итоговая цена: ${totalPrice}₸`}</p>
                   <div className="flex items-center space-x-2 mt-4 justify-center">
                     <button
-                      onClick={() => dispatch(updateQuantity({ index, type: "decrease" }))}
+                      onClick={() =>
+                        dispatch(updateQuantity({ index, type: "decrease" }))
+                      }
                       className="p-2 bg-gray-200 rounded-full hover:bg-gray-300"
                     >
                       -
                     </button>
                     <span>{item.quantity}</span>
                     <button
-                      onClick={() => dispatch(updateQuantity({ index, type: "increase" }))}
+                      onClick={() =>
+                        dispatch(updateQuantity({ index, type: "increase" }))
+                      }
                       className="p-2 bg-gray-200 rounded-full hover:bg-gray-300"
                     >
                       +

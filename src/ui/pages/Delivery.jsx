@@ -1,5 +1,3 @@
-import React from "react";
-
 const Delivery = () => {
   return (
     <div className="px-10 py-5 bg-[#E8E8E8]">
@@ -8,7 +6,7 @@ const Delivery = () => {
         <span>{">"}</span>
         <span>Доставка и оплата</span>
       </div>
-      <div className="py-10">
+      <div className="py-10 px-10 text-xl">
         <h1 className="text-center text-[64px] font-semibold">
           Доставка и оплата
         </h1>
