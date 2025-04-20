@@ -1,4 +1,6 @@
 import axios from "axios";
+import store from "../state/store";
+import { setToken, setUser, clearToken } from "../state/slices/authSlice";
 
 const API_URL = "http://localhost:8000/auth/";
 
@@ -10,9 +12,11 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  const state = store.getState();
+  const token = state.auth.token; // Get the token from Redux
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    console.log("Adding token to request:", token);
+    config.headers.Authorization = `Token ${token}`; // Use 'Token' prefix instead of 'Bearer'
   }
   return config;
 });
@@ -32,7 +36,7 @@ export const register = async (userData) => {
   }
 };
 
-export const login = async (userData) => {
+export const login = async (userData, dispatch) => {
   try {
     if (!userData.username || !userData.password) {
       throw new Error("Отсутствуют обязательные поля");
@@ -40,11 +44,9 @@ export const login = async (userData) => {
     // console.log("Попытка входа в систему...");
     const response = await api.post("login", userData);
     if (response.data.token) {
-      localStorage.setItem("token", response.data.token);
-      // if (response.data.user) {
-      //   localStorage.setItem("user", JSON.stringify(response.data.user));
-      // }
-      console.log("Вход выполнен успешно!");
+      dispatch(setToken(response.data.token)); // set the token in Redux
+      console.log("Login successful, fetching user data...");
+      await fetchUser(dispatch); // fetch and set user data
       return response.data;
     } else {
       throw new Error("Токен не получен");
@@ -55,11 +57,24 @@ export const login = async (userData) => {
   }
 };
 
-// export const logout = () => {
-//   localStorage.removeItem("token");
-//   return api.post("logout");
-// };
+export const fetchUser = async (dispatch) => {
+  try {
+    const response = await api.get("user"); // Call the /auth/user endpoint
+    if (response.data) {
+      dispatch(setUser(response.data)); // Set user data in Redux
+      console.log("User data fetched successfully:", response.data);
+    } else {
+      throw new Error("User data not found");
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error.message);
+if (error.response && error.response.status === 401) {
+      console.log("Unauthorized: Logging out...");
+      dispatch(clearToken()); // Clear token and user data if unauthorized
+    }
+    throw error;
+  }
+};
 
-// export const getUser = () => api.get("user");
 
 export default api;

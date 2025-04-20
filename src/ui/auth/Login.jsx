@@ -1,12 +1,16 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { login } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ toggleForm }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,13 +20,16 @@ export default function Login({ toggleForm }) {
     e.preventDefault();
     try {
       // console.log("Вход...");
-      const data = await login({
-        username: formData.username,
-        password: formData.password,
-      });
+      const data = await login(
+        {
+          username: formData.username,
+          password: formData.password,
+        },
+        dispatch
+      );
       if (data.token) {
-        // console.log("Вход выполнен успешно! Перенаправление...");
-        window.location.href = "/";
+        console.log("Вход выполнен успешно! Перенаправление...");
+        navigate("/");
       }
     } catch (error) {
       console.error("Ошибка:", error.message);
