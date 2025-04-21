@@ -8,7 +8,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log("User in Profile component:", user);
+  // console.log("User in Profile:", user);
 
   const handleLogout = () => {
     dispatch(clearToken());

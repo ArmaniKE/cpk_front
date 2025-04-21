@@ -28,7 +28,7 @@ export default function Login({ toggleForm }) {
         dispatch
       );
       if (data.token) {
-        console.log("Вход выполнен успешно! Перенаправление...");
+        // console.log("Вход выполнен успешно! Перенаправление...");
         navigate("/");
       }
     } catch (error) {

@@ -11,7 +11,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setToken: (state, action) => {
-      console.log("setToken action dispatched with payload:", action.payload);
+      // console.log("setToken action dispatched with payload:", action.payload);
       state.token = action.payload;
       saveToken(action.payload);
     },
@@ -21,7 +21,7 @@ const authSlice = createSlice({
       removeToken();
     },
     setUser: (state, action) => {
-      console.log("setUser action dispatched with payload:", action.payload);
+      // console.log("setUser action dispatched with payload:", action.payload);
       state.user = action.payload;
     },
   },

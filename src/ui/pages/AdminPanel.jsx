@@ -67,12 +67,12 @@ const AdminPanel = () => {
             <img
               src="/header/search_icon.svg"
               alt="Search"
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
+              className="absolute left-3 top-3 h-5 w-5 text-gray-500"
             />
             <img
               src="/header/delete_icon.svg"
               alt="Search"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 h-8 w-8 text-gray-500"
+              className="absolute right-3 top-2 h-8 w-8 text-gray-500"
             />
           </div>
           <div className="relative w-50 mb-10">
@@ -84,12 +84,12 @@ const AdminPanel = () => {
             <img
               src="/header/search_icon.svg"
               alt="Search"
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
+              className="absolute left-3 top-3 h-5 w-5 text-gray-500"
             />
             <img
               src="/header/delete_icon.svg"
               alt="Search"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 h-8 w-8 text-gray-500"
+              className="absolute right-3 top-2 h-8 w-8 text-gray-500"
             />
           </div>
         </div>
