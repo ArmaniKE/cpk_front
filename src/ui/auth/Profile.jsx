@@ -16,7 +16,7 @@ const Profile = () => {
   };
 
   const handleAdminRedirect = () => {
-    navigate("/admin"); // Redirect to /admin page
+    navigate("/admin");
   };
 
   useEffect(() => {

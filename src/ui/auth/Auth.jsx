@@ -12,7 +12,7 @@ export default function Auth() {
 
   useEffect(() => {
     if (token) {
-      fetchUser(dispatch); // Fetch user data if token exists
+      fetchUser(dispatch);
     }
   }, [token, dispatch]);
 

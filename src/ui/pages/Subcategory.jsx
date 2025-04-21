@@ -109,10 +109,10 @@ const Subcategory = () => {
               </div>
               <h2 className="text-xl font-semibold mt-2">{item.name}</h2>
               <p className="text-gray-600">{item.description}</p>
-              <p className="text-lg font-bold mt-2">{item.price}</p>
+              <p className="text-lg font-bold mt-2">{item.price}₸</p>
               <button
                 onClick={() => handleBuyClick(item)}
-                className={`mt-auto p-2 rounded-full text-white ${
+                className={`mt-2 p-2 rounded-full text-white ${
                   pressed[item.name] ? "bg-sky-300" : "bg-sky-500"
                 }`}
               >

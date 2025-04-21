@@ -13,10 +13,10 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const state = store.getState();
-  const token = state.auth.token; // Get the token from Redux
+  const token = state.auth.token;
   if (token) {
     console.log("Adding token to request:", token);
-    config.headers.Authorization = `Token ${token}`; // Use 'Token' prefix instead of 'Bearer'
+    config.headers.Authorization = `Token ${token}`;
   }
   return config;
 });
@@ -44,9 +44,9 @@ export const login = async (userData, dispatch) => {
     // console.log("Попытка входа в систему...");
     const response = await api.post("login", userData);
     if (response.data.token) {
-      dispatch(setToken(response.data.token)); // set the token in Redux
+      dispatch(setToken(response.data.token));
       console.log("Login successful, fetching user data...");
-      await fetchUser(dispatch); // fetch and set user data
+      await fetchUser(dispatch);
       return response.data;
     } else {
       throw new Error("Токен не получен");
@@ -59,9 +59,9 @@ export const login = async (userData, dispatch) => {
 
 export const fetchUser = async (dispatch) => {
   try {
-    const response = await api.get("user"); // Call the /auth/user endpoint
+    const response = await api.get("user");
     if (response.data) {
-      dispatch(setUser(response.data)); // Set user data in Redux
+      dispatch(setUser(response.data));
       console.log("User data fetched successfully:", response.data);
     } else {
       throw new Error("User data not found");
@@ -70,7 +70,7 @@ export const fetchUser = async (dispatch) => {
     console.error("Error fetching user data:", error.message);
 if (error.response && error.response.status === 401) {
       console.log("Unauthorized: Logging out...");
-      dispatch(clearToken()); // Clear token and user data if unauthorized
+      dispatch(clearToken());
     }
     throw error;
   }
