@@ -2,7 +2,9 @@ import axios from "axios";
 import store from "../state/store";
 import { setToken, setUser, clearToken } from "../state/slices/authSlice";
 
-const API_URL = "http://localhost:8000/auth/";
+// const API_URL = "http://localhost:8000/auth/";
+const API_URL = "backend:8000/auth/";
+
 
 const api = axios.create({
   baseURL: API_URL,

@@ -30,7 +30,8 @@ const Subcategory = () => {
       if (subcategory && subcategory.id) {
         try {
           const response = await fetch(
-            `http://127.0.0.1:8000/api/items?category-id=${subcategory.id}`
+            // `http://127.0.0.1:8000/api/items?category-id=${subcategory.id}`
+              `backend:8000/api/items?category-id=${subcategory.id}`
           );
           if (!response.ok) {
             throw new Error("Ошибка при получении товаров");
